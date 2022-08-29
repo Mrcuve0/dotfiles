@@ -29,7 +29,8 @@ set number relativenumber
 
 " Highlight cursor line underneath the cursor horizontally.
 set cursorline
-hi CursorLine term=bold cterm=bold ctermbg=LightGray 
+hi CursorLine term=bold cterm=bold ctermbg=Gray ctermfg=Black
+" hi CursorLine term=bold cterm=bold ctermbg=Blue guibg=Blue
 
 " Highlight cursor line underneath the cursor vertically.
 set cursorcolumn
