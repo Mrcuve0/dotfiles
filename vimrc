@@ -13,16 +13,15 @@
 set nocompatible
 
 " Enable type file detection. Vim will be able to try to detect the type of file is use.
-filetype on
-
-" Enable plugins and load plugin for the detected file type.
-filetype plugin on
-
-" Load an indent file for the detected file type.
-filetype indent on
+" Enable plugins and load plugin for the detected file type
+if has('filetype')
+    filetype indent plugin on
+endif
 
 " Turn syntax highlighting on.
-syntax on
+if has('syntax')
+   syntax on
+endif
 
 " Add numbers to the file.
 set number relativenumber
@@ -35,14 +34,30 @@ hi CursorLine term=bold cterm=bold ctermbg=Gray ctermfg=Black
 " Highlight cursor line underneath the cursor vertically.
 set cursorcolumn
 
-" Set shift width to 4 spaces.
+" Allow backspacing over autoindent, line breaks and start of insert action
+set backspace=indent,eol,start
+
+" When opening a new line and no filetype-specific indenting is enabled, keep
+" the same indent as the line you're currently on. Useful for READMEs etc.
+set autoindent
+
+" Display the cursor position on the last line of the screen or in the status
+" line of a window
+set ruler
+
+" Enable use of the mouse for all modes
+if has('mouse')
+    set mouse=a
+endif
+
+" Indentation settings for using 4 spaces instead of tabs.
+" Do not change 'tabstop' from its default value of 8 with this setup
 set shiftwidth=4
+set softtabstop=4
+set expandtab
 
 " Set tab width to 4 columns.
-set tabstop=4
-
-" Use space characters instead of tabs.
-set expandtab
+" set tabstop=4
 
 " Do not save backup files.
 set nobackup
@@ -104,9 +119,13 @@ call plug#end()
 
 " Set the backslash as the leader key.
 " let mapleader = "\"
+let mapleader=","
+
+" Use leader to save the current file using the sudo
+noremap <Leader>W :w !sudo tee % > /dev/null
 
 " Press \\ to jump back to the last cursor position.
-" nnoremap <leader>\ ``
+nnoremap <leader>\ ``
 
 " Press \p to print the current file to the default printer from a Linux operating system.
 " View available printers:   lpstat -v
