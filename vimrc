@@ -117,9 +117,10 @@ call plug#end()
 
 " MAPPINGS --------------------------------------------------------------- {{{
 
-" Set the backslash as the leader key.
-" let mapleader = "\"
-let mapleader=","
+" Set the spacebar as the leader key and avoid adding a space if in normal
+" mode
+let mapleader=" "
+nnoremap <space> <nop>
 
 " Use leader to save the current file using the sudo
 noremap <Leader>W :w !sudo tee % > /dev/null
@@ -136,8 +137,8 @@ nnoremap <silent> <leader>p :%w !lp<CR>
 " Type jj to exit insert mode quickly.
 inoremap jj <Esc>
 
-" Press the space bar to type the : character in command mode.
-nnoremap <space> :
+" Press the ";" to type the : character in command mode.
+nnoremap ; :
 
 " Pressing the letter o will open a new line below the current one.
 " Exit insert mode after creating a new line above or below the current line.
