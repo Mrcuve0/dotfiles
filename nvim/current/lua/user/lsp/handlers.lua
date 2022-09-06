@@ -27,7 +27,7 @@ M.setup = function()
   local config = {
     -- disable virtual text
     virtual_lines = false,
-    virtual_text = false,
+    virtual_text = false, -- If 'false' use 'gl' to open a popup with the LSP information
 
     -- show signs
     signs = {
@@ -37,7 +37,7 @@ M.setup = function()
     underline = true,
     severity_sort = true,
     float = {
-      focusable = true,
+      focusable = false,
       style = "minimal",
       border = "rounded",
       source = "always",
@@ -48,6 +48,7 @@ M.setup = function()
 
   vim.diagnostic.config(config)
 
+  -- <S-k> will hover over the object
   vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
     border = "rounded",
   })
@@ -78,7 +79,6 @@ local function lsp_keymaps(bufnr)
 end
 
 M.on_attach = function(client, bufnr)
-
   lsp_keymaps(bufnr)
   local status_ok, illuminate = pcall(require, "illuminate")
   if not status_ok then
