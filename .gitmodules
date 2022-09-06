@@ -1,0 +1,3 @@
+[submodule "nvim_submodule"]
+	path = nvim_submodule
+	url = git@github.com:Mrcuve0/nvim.git
