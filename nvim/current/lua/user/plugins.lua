@@ -94,14 +94,8 @@ return packer.startup(function(use)
   -- Telescope
   use { "nvim-telescope/telescope.nvim", commit = "d96eaa914aab6cfc4adccb34af421bdd496468b0" }
 
-  -- -- Which Key
-  -- use { "folke/which-key.nvim" }
-  -- -- Load 'which-key' config from 'which-key.lua' file
-  -- local wk_status_ok, _ = pcall(require, "user.which-key")
-  -- if not wk_status_ok then
-  --   vim.notify("Error while loading 'user.which-key' config file, returning...")
-  --   return
-  -- end
+  -- Which Key
+  use { "folke/which-key.nvim" }
 
   -- Treesitter
   use {
